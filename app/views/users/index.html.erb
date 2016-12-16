@@ -1,0 +1,28 @@
+<% if flash[:error] %>
+<p><%= flash[:error] %></p>
+<% end %>
+<% if flash[:noemail] %>
+<p><%= flash[:noemail] %></p>
+<% end %>
+<% if flash[:create_error] %>
+  <p><%= flash[:create_error] %></p>
+<% end %>
+
+<h1>Register</h1>
+<form action="/users/create" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  First Name: <input type="text" name="user[first_name]">
+  Last Name: <input type="text" name="user[last_name]">
+  Email: <input type="text" name="user[email]">
+  Password: <input type="password" name="user[password]">
+  Confirm Password:<input type="password" name="user[password_confirmation]">
+  <input type="submit" name="Register" value="Register">
+</form>
+
+<h1>User Login</h1>
+<form action="/users/login" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  Email: <input type="text" name="user[email]">
+  Password: <input type="password" name="user[password]">
+  <input type="submit" name="Login" value="Login">
+</form>
