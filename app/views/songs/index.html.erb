@@ -19,12 +19,11 @@
         <tr>
           <td style="text-align:center"><%= song.artist %></td>
           <td style="text-align:center"><a href="/songs/<%= song.id %>"><%= song.title %></a></td>
-          <td style="text-align:center"><%= song.adds.count %></td>
+          <td style="text-align:center"><%= song.adds.sum(:add_count) %></td>
           <td style="text-align:center">
             <form action='/add' method='post'>
                 <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
                 <input type="hidden" name="song_id" value="<%= song.id %>">
-                <input type="hidden" name="add_count" value="1">
                 <input type='submit' value='Add'>
             </form>
           </td>
@@ -43,7 +42,7 @@
 <h3>Add a Song: </h3>
 <form action="/songs/create" method="post">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <input type="hidden" name="user_id" value="<%= session[:user_id]%>">
+  <input type="hidden" name="user_id" value="<%=session[:user_id]%>">
   Title: <input type="text" name="title">
   Artist: <input type="text" name="artist">
   <input type="submit" name="event" value="Add Song">

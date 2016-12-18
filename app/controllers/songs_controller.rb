@@ -16,7 +16,6 @@ class SongsController < ApplicationController
       flash[:error] = "Must be longer than 2 characters"
       redirect_to '/songs'
     else
-      # @user = User.find(params[:user_id])
       @song = Song.create(user_id:params[:user_id], artist:params[:artist], title:params[:title])
       redirect_to "/songs"
     end
@@ -25,9 +24,6 @@ class SongsController < ApplicationController
   def show
     @users = User.all
     @song = Song.find_by_id(params[:id])
-    # @adds = Add.select(:).where(:user_id => session[:user_id])
-    @adds = Add.where(:song_id => params[:id])
-    # @user_adds = Add.where(:song_id => params[:id]).joins({users: :songs}).group('user_id').all
   end
 
 end

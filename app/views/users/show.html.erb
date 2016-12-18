@@ -5,7 +5,7 @@
     <input type='submit' value='Log Out'>
 </form>
 
-<h1><%= @user['first_name']%>'s Playlist</h1>
+<h1><%= @user_adds['first_name']%>'s Playlist</h1>
 
 <table>
   <tr>
@@ -14,11 +14,11 @@
     <th>Times Added</th>
   </tr>
   <tbody>
-    <% @adds.each do |add| %>
+    <% @user_adds.adds.each do |add| %>
     <tr>
       <td style="text-align:center"><%= add.song.artist %></td>
       <td style="text-align:center"><%= add.song.title %></td>
-      <td style="text-align:center"><%= add.song.adds.count %></td>
+      <td style="text-align:center"><%= add.add_count %></td>
     </tr>
     <% end %>
   </tbody>
